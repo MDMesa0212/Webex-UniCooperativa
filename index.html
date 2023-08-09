@@ -13,12 +13,14 @@
 </head>
 <body
   x-cloak
-  x-data="{ page, services, language, languages } = $store.model"
+  x-data="{ page, services, prueba, services_2, languages } = $store.model"
 >
+<img class="UniAndes" src="assets/images/Universidad-Cooperativa-Logo.png" alt="">
+<img class="ciscologo" src="assets/images/ciscologo3.png" alt="">
   <div class="home-screen" x-show="page === 'home'">
-    <h1>Webex Bank</h1>
+    <h1>Universidad Cooperativa de Colombia</h1>
 
-    <h2 @click="page = 'service'" class="touch-to-start">Touch to start</h2>
+    <h2 @click="page = 'service'" class="touch-to-start">Toca para empezar</h2>
 
     <div class="languages">
       <template x-for="current in languages">
@@ -33,7 +35,7 @@
   </div>
 
   <div class="service" x-show="page === 'service'">
-    <h2>Choose Your Service</h2>
+    <h2>Elige tu servicio</h2>
     <div class="row">
       <template x-for="service in services">
         <a class="service" x-bind:href="'sip:'+ service.url" :class="service.name">
@@ -41,9 +43,19 @@
           <label x-text="service.name"></label>
         </a>
       </template>
+      <template x-for="service in prueba">
+        <a class="service" x-bind:href="'tel:'+ service.url" :class="service.name">
+          <div class="avatar"></div>
+          <label x-text="service.name"></label>
+        </a>
+      </template>
+      <template x-for="service in services_2">
+        <a class="service" x-bind:href="'sip:'+ service.url" :class="service.name">
+          <div class="avatar"></div>
+          <label x-text="service.name"></label>
+        </a>
+      </template>
     </div>
-    <button @click="page = 'home'" class="back">Back</button>
+    <button @click="page = 'home'" class="back">Atrás </button>
   </div>
 </body>
-
-</html>
